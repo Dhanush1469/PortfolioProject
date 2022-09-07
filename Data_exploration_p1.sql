@@ -16,11 +16,6 @@ From PortfolioProject..CovidDeaths
 Where continent is not null 
 order by 1,2
 
-
-
-
-
-
 -- Total Cases vs Total Deaths
 -- Shows likelihood of dying if you contract covid in your country
 
@@ -110,9 +105,6 @@ on dea.location = vac.location
 and dea.date=vac.date
 
 
-
-
-
 Select dea.continent, dea.location, dea.date, dea.population, vac.[new_vaccinations]
 , SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date) as RollingPeopleVaccinated
 --, (RollingPeopleVaccinated/population)*100
@@ -170,8 +162,6 @@ Join PortfolioProject..CovidVaccinations vac
 
 Select *, (RollingPeopleVaccinated/Population)*100
 From #PercentPopulationVaccinated
-
-
 
 
 -- Creating View to store data for later visualizations
